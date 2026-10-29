@@ -1,11 +1,20 @@
-name: Hello World
+name: Jest Test
 
 on:
   push:
+    branches:
+      - dev
+  pull-request:
+    branches:
+      - master
 
 jobs:
-  say-hello:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: Print msg
-        run: echo "Hello from Github Actions..."
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 18
+      - run: npm install
+      - run: npm test || (echo "TESTS FAILED" && exit 1)
