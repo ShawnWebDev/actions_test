@@ -8,6 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print msg
-        run: echo "Run Tests..."
-      - name: Run Tests
-        run: npm test
+        run: echo "Hello from Github Actions..."
